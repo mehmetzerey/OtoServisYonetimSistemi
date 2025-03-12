@@ -1,22 +1,35 @@
-namespace OtoServisYonetim.Application.Common.Interfaces;
-
-/// <summary>
-/// Mevcut kullanıcı bilgilerini sağlayan arayüz
-/// </summary>
-public interface ICurrentUserService
+namespace OtoServisYonetim.Application.Common.Interfaces
 {
     /// <summary>
-    /// Mevcut kullanıcının ID'si
+    /// Mevcut kullanıcı bilgilerini sağlayan servis arayüzü
     /// </summary>
-    string? UserId { get; }
-    
-    /// <summary>
-    /// Mevcut kullanıcının adı
-    /// </summary>
-    string? UserName { get; }
-    
-    /// <summary>
-    /// Kullanıcının kimliği doğrulanmış mı
-    /// </summary>
-    bool IsAuthenticated { get; }
+    public interface ICurrentUserService
+    {
+        /// <summary>
+        /// Mevcut kullanıcının ID'si
+        /// </summary>
+        string? UserId { get; }
+
+        /// <summary>
+        /// Kullanıcının kimlik doğrulamasından geçip geçmediği
+        /// </summary>
+        bool IsAuthenticated { get; }
+
+        /// <summary>
+        /// Kullanıcının belirli bir role sahip olup olmadığını kontrol eder
+        /// </summary>
+        /// <param name="role">Kontrol edilecek rol</param>
+        /// <returns>Kullanıcı role sahipse true, değilse false</returns>
+        bool IsInRole(string role);
+
+        /// <summary>
+        /// Kullanıcının adı
+        /// </summary>
+        string? UserName { get; }
+
+        /// <summary>
+        /// Kullanıcının e-posta adresi
+        /// </summary>
+        string? Email { get; }
+    }
 }
